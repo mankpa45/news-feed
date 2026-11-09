@@ -1,5 +1,5 @@
 {
-  "fetched_at": 1794237665.290828,
+  "fetched_at": 1794261856.108112,
   "source": "https://nfs.faireconomy.media/ff_calendar_thisweek.json",
   "events": [
     {
@@ -69,7 +69,7 @@
       "title": "FOMC Member Paulson Speaks"
     },
     {
-      "date": "2026-11-12T09:00:00-05:00",
+      "date": "2026-11-12T08:30:00-05:00",
       "country": "USD",
       "impact": "Low",
       "title": "FOMC Member Hammack Speaks"
@@ -81,7 +81,7 @@
       "title": "FOMC Member Barr Speaks"
     },
     {
-      "date": "2026-11-12T11:30:00-05:00",
+      "date": "2026-11-12T11:15:00-05:00",
       "country": "USD",
       "impact": "Low",
       "title": "FOMC Member Goolsbee Speaks"
