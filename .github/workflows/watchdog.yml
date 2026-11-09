@@ -1,0 +1,33 @@
+name: news-watchdog
+
+on:
+  schedule:
+    - cron: "20 * * * *"     # every hour, 20 minutes past, after the news job
+  workflow_dispatch:          # run it by hand to check
+
+permissions:
+  actions: write              # lets this job re-run the news job
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check news.json age and re-run the news job if stale
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          RAW="https://raw.githubusercontent.com/${REPO}/main/news.json"
+          MAX_AGE_SECONDS=7200     # news.json should be updated at least every 2 hours
+          curl -sf "$RAW" -o news.json || echo "news.json not reachable"
+          FETCHED=$(python3 -c "import json;print(int(json.load(open('news.json'))['fetched_at']))" 2>/dev/null || echo 0)
+          NOW=$(date +%s)
+          AGE=$(( NOW - FETCHED ))
+          echo "news.json is ${AGE} seconds old (limit ${MAX_AGE_SECONDS})"
+          if [ "$FETCHED" -eq 0 ] || [ "$AGE" -gt "$MAX_AGE_SECONDS" ]; then
+            echo "stale or missing: re-running the news job"
+            gh workflow run news.yml --repo "$REPO"
+            exit 1            # red run, so the failure shows in the Actions tab
+          fi
+          echo "news feed is fresh"
