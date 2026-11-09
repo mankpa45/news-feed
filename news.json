@@ -1,0 +1,144 @@
+{
+  "fetched_at": 1794225515.405691,
+  "source": "https://nfs.faireconomy.media/ff_calendar_thisweek.json",
+  "events": [
+    {
+      "date": "2026-11-09T08:40:00-05:00",
+      "country": "USD",
+      "impact": "Low",
+      "title": "FOMC Member Bowman Speaks"
+    },
+    {
+      "date": "2026-11-09T10:00:00-05:00",
+      "country": "USD",
+      "impact": "Low",
+      "title": "FOMC Member Goolsbee Speaks"
+    },
+    {
+      "date": "2026-11-09T12:15:00-05:00",
+      "country": "USD",
+      "impact": "Low",
+      "title": "FOMC Member Barkin Speaks"
+    },
+    {
+      "date": "2026-11-10T04:00:00-05:00",
+      "country": "USD",
+      "impact": "Medium",
+      "title": "FOMC Member Waller Speaks"
+    },
+    {
+      "date": "2026-11-10T08:30:00-05:00",
+      "country": "USD",
+      "impact": "High",
+      "title": "Core CPI m/m"
+    },
+    {
+      "date": "2026-11-10T08:30:00-05:00",
+      "country": "USD",
+      "impact": "High",
+      "title": "CPI m/m"
+    },
+    {
+      "date": "2026-11-10T10:50:00-05:00",
+      "country": "USD",
+      "impact": "Low",
+      "title": "FOMC Member Logan Speaks"
+    },
+    {
+      "date": "2026-11-10T13:30:00-05:00",
+      "country": "USD",
+      "impact": "Low",
+      "title": "FOMC Member Schmid Speaks"
+    },
+    {
+      "date": "2026-11-10T15:30:00-05:00",
+      "country": "USD",
+      "impact": "Low",
+      "title": "FOMC Member Bowman Speaks"
+    },
+    {
+      "date": "2026-11-10T18:30:00-05:00",
+      "country": "USD",
+      "impact": "Low",
+      "title": "FOMC Member Bowman Speaks"
+    },
+    {
+      "date": "2026-11-10T18:30:00-05:00",
+      "country": "USD",
+      "impact": "Low",
+      "title": "FOMC Member Paulson Speaks"
+    },
+    {
+      "date": "2026-11-12T09:00:00-05:00",
+      "country": "USD",
+      "impact": "Low",
+      "title": "FOMC Member Hammack Speaks"
+    },
+    {
+      "date": "2026-11-12T10:00:00-05:00",
+      "country": "USD",
+      "impact": "Low",
+      "title": "FOMC Member Barr Speaks"
+    },
+    {
+      "date": "2026-11-12T11:30:00-05:00",
+      "country": "USD",
+      "impact": "Low",
+      "title": "FOMC Member Goolsbee Speaks"
+    },
+    {
+      "date": "2026-11-12T13:10:00-05:00",
+      "country": "USD",
+      "impact": "Low",
+      "title": "FOMC Member Daly Speaks"
+    },
+    {
+      "date": "2026-11-12T13:30:00-05:00",
+      "country": "USD",
+      "impact": "Low",
+      "title": "FOMC Member Schmid Speaks"
+    },
+    {
+      "date": "2026-11-12T18:30:00-05:00",
+      "country": "USD",
+      "impact": "Low",
+      "title": "FOMC Member Williams Speaks"
+    },
+    {
+      "date": "2026-11-13T08:30:00-05:00",
+      "country": "USD",
+      "impact": "High",
+      "title": "Core PPI m/m"
+    },
+    {
+      "date": "2026-11-13T08:30:00-05:00",
+      "country": "USD",
+      "impact": "High",
+      "title": "PPI m/m"
+    },
+    {
+      "date": "2026-11-13T09:10:00-05:00",
+      "country": "USD",
+      "impact": "Low",
+      "title": "FOMC Member Collins Speaks"
+    },
+    {
+      "date": "2026-11-13T10:50:00-05:00",
+      "country": "USD",
+      "impact": "Low",
+      "title": "FOMC Member Bowman Speaks"
+    },
+    {
+      "date": "2026-11-13T12:00:00-05:00",
+      "country": "USD",
+      "impact": "Low",
+      "title": "FOMC Member Daly Speaks"
+    },
+    {
+      "date": "2026-11-13T19:00:00-05:00",
+      "country": "USD",
+      "impact": "Low",
+      "title": "FOMC Member Jefferson Speaks"
+    }
+  ]
+}
