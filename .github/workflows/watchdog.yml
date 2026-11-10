@@ -13,21 +13,37 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - name: Check news.json age and re-run the news job if stale
+      - name: Check news.json and re-run the news job if needed
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
         run: |
           RAW="https://raw.githubusercontent.com/${REPO}/main/news.json"
           MAX_AGE_SECONDS=7200     # news.json should be updated at least every 2 hours
-          curl -sf "$RAW" -o news.json || echo "news.json not reachable"
-          FETCHED=$(python3 -c "import json;print(int(json.load(open('news.json'))['fetched_at']))" 2>/dev/null || echo 0)
           NOW=$(date +%s)
-          AGE=$(( NOW - FETCHED ))
-          echo "news.json is ${AGE} seconds old (limit ${MAX_AGE_SECONDS})"
-          if [ "$FETCHED" -eq 0 ] || [ "$AGE" -gt "$MAX_AGE_SECONDS" ]; then
-            echo "stale or missing: re-running the news job"
-            gh workflow run news.yml --repo "$REPO"
-            exit 1            # red run, so the failure shows in the Actions tab
+
+          if curl -sf "$RAW" -o news.json; then
+            FETCHED=$(python3 -c "import json;print(int(json.load(open('news.json')).get('fetched_at',0)))" 2>/dev/null || echo 0)
+          else
+            FETCHED=0
           fi
-          echo "news feed is fresh"
+
+          if [ "$FETCHED" -eq 0 ]; then
+            echo "news.json is missing or unreadable: re-running the news job"
+            STALE=1
+          else
+            AGE=$(( NOW - FETCHED ))
+            echo "news.json is ${AGE} seconds old (limit ${MAX_AGE_SECONDS})"
+            [ "$AGE" -gt "$MAX_AGE_SECONDS" ] && STALE=1 || STALE=0
+          fi
+
+          if [ "$STALE" -eq 1 ]; then
+            if gh workflow run news.yml --repo "$REPO"; then
+              echo "news job re-run requested"
+            else
+              echo "ERROR: could not request the news job re-run"
+              exit 1          # only a failed trigger counts as a failure
+            fi
+          else
+            echo "news feed is fresh"
+          fi
