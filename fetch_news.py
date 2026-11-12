@@ -18,9 +18,29 @@ KEEP_IMPACT = "High"
 TRIES = 3
 
 
+# FOMC: pause only for the Tier 1 leaders' speeches, and for minutes and rate decisions.
+# Tier 2 and 3 speeches are ignored, since the feed title doesn't show the topic.
+FOMC_SPEECH_WORDS = ("SPEAKS", "SPEECH", "TESTIF", "REMARKS", "MEMBER")
+FOMC_TIER1 = ("WARSH", "WILLIAMS", "WALLER")
+
+
+def fomc_pause(title):
+    """True if this FOMC event should pause trading. None if it isn't an FOMC event."""
+    t = title.upper()
+    if "FOMC" not in t:
+        return None
+    if any(w in t for w in FOMC_SPEECH_WORDS):
+        return any(name in t for name in FOMC_TIER1)
+    return True                      # minutes and rate decisions
+
+
 def is_blackout_event(e):
-    """High-impact USD releases, plus any USD FOMC event (speeches and minutes are often rated medium)."""
-    return e.get("impact") == KEEP_IMPACT or "FOMC" in e.get("title", "").upper()
+    """High-impact USD releases, plus the FOMC events fomc_pause() allows."""
+    title = e.get("title", "")
+    fomc = fomc_pause(title)
+    if fomc is not None:
+        return fomc
+    return e.get("impact") == KEEP_IMPACT
 
 
 def read_feed():
