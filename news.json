@@ -1,5 +1,5 @@
 {
-  "fetched_at": 1794783416.7163496,
+  "fetched_at": 1794793107.0295546,
   "source": "https://nfs.faireconomy.media/ff_calendar_thisweek.json",
   "events": [
     {
@@ -53,7 +53,7 @@
     {
       "date": "2026-11-20T08:25:00-05:00",
       "country": "USD",
-      "impact": "Medium",
+      "impact": "Low",
       "title": "FOMC Member Waller Speaks"
     }
   ]
